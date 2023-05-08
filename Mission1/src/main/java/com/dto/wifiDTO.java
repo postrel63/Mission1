@@ -24,10 +24,6 @@ public class wifiDTO {
 
     }
 
-    public float getDistance() {
-        return distance;
-    }
-
     public wifiDTO(float distance, String x_SWIFI_MGR_NO, String x_SWIFI_WRDOFC, String x_SWIFI_MAIN_NM, String x_SWIFI_ADRES1, String x_SWIFI_ADRES2, String x_SWIFI_INSTL_FLOOR, String x_SWIFI_INSTL_TY, String x_SWIFI_INSTL_MBY, String x_SWIFI_SVC_SE, String x_SWIFI_CMCWR, String x_SWIFI_CNSTC_YEAR, String x_SWIFI_INOUT_DOOR, String x_SWIFI_REMARS3, float lat, float lnt, String work_DTTM) {
         this.distance = distance;
         this.x_SWIFI_MGR_NO = x_SWIFI_MGR_NO;
@@ -46,6 +42,10 @@ public class wifiDTO {
         this.lat = lat;
         this.lnt = lnt;
         this.work_DTTM = work_DTTM;
+    }
+
+    public float getDistance() {
+        return distance;
     }
 
     public void setDistance(float distance) {

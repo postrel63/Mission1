@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.db.jdbcUtil;
+import com.dto.apiwifiDTO;
 import com.dto.historyDTO;
 import com.dto.wifiDTO;
 
@@ -35,7 +35,7 @@ public class wifiDAO {
     }
 
 
-    public int saveDB(List<wifiDTO> dtoArray) {
+    public int saveDB(List<apiwifiDTO> dtoArray) {
 
 
         int batchSize = 1000;
@@ -47,7 +47,7 @@ public class wifiDAO {
             String sql = "insert into wifi_info values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             pstmt = con.prepareStatement(sql);
 
-            for (wifiDTO wifidto : dtoArray) {
+            for (apiwifiDTO wifidto : dtoArray) {
                 pstmt.setString(1, wifidto.getX_SWIFI_MGR_NO());
                 pstmt.setString(2, wifidto.getX_SWIFI_WRDOFC());
                 pstmt.setString(3, wifidto.getX_SWIFI_MAIN_NM());
@@ -61,9 +61,9 @@ public class wifiDAO {
                 pstmt.setString(11, wifidto.getX_SWIFI_CNSTC_YEAR());
                 pstmt.setString(12, wifidto.getX_SWIFI_INOUT_DOOR());
                 pstmt.setString(13, wifidto.getX_SWIFI_REMARS3());
-                pstmt.setFloat(14, wifidto.getLat());
-                pstmt.setFloat(15, wifidto.getLnt());
-                pstmt.setString(16, wifidto.getWork_DTTM());
+                pstmt.setFloat(14, wifidto.getLAT());
+                pstmt.setFloat(15, wifidto.getLNT());
+                pstmt.setString(16, wifidto.getWORK_DTTM());
 
                 pstmt.addBatch(); // Batch에 SQL 작업 추가
                 count++;

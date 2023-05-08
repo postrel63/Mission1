@@ -2,6 +2,7 @@ package com.service;
 
 
 import com.dao.wifiDAO;
+import com.dto.apiwifiDTO;
 import com.dto.wifiDTO;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -68,9 +69,9 @@ public class ApiExplorerService {
     public  int downloadWifi() throws IOException {
         int start = 0;
         int end = 0;
-        int total = 0;
+        int total = 100;
         int result=0;
-        total = totalCnt(); //24500개의 정보
+//        total = totalCnt(); //24500개의 정보
         System.out.println(total);
 
         int pageEnd = total / 1000;
@@ -121,11 +122,11 @@ public class ApiExplorerService {
             Gson gson = new Gson();
             JsonObject jsonObject = gson.fromJson(sb.toString(), JsonObject.class);
             JsonArray jsonArray = jsonObject.getAsJsonObject("TbPublicWifiInfo").getAsJsonArray("row");
-            List<wifiDTO> wifiDTOList = gson.fromJson(jsonArray, new TypeToken<List<wifiDTO>>() {
-            }.getType());
+            List<apiwifiDTO> apiwifiDTO = gson.fromJson(jsonArray, new TypeToken<List<apiwifiDTO>>() {}.getType());
+            System.out.println(apiwifiDTO);
 
-            System.out.println(wifiDTOList);
-          result = wifidao.saveDB(wifiDTOList);
+
+          result = wifidao.saveDB(apiwifiDTO);
 
           if (result == 1){
               result = total;
